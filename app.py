@@ -21,19 +21,25 @@ def profile(name):
 
 @app.route('/add_numbers', methods=['GET','POST'])
 def add_numbers_post():
-	  # --> ['5', '6', '8']
-	  # print(type(request.form['text']))
-	  if request.method == 'GET':
-	  	return render_template('add_numbers.html')
-	  elif request.method == 'POST':
-  	      print(request.form['text'].split())
-  	      total = 0
-  	      try:
-  	      	for str_num in request.form['text'].split():
-  	      		total += int(str_num)
-  	      	return render_template('add_numbers.html', result=str(total))
-  	      except ValueError:
-  	      	return "Easy now! Let's keep it simple! 2 numbers with a space between them please"
+	### Restaurant Tipper Program
+### Calculates total amount of bill including a 15% tip
+
+print '''Hello there!
+         This program calculates total amount
+         of bill you need to pay including a 15% tip
+         So please enter your total bill amount and I will
+         give you your total bill.\n'''
+raw_bill= raw_input("Bill Total Amount: ")
+x = float(raw_bill)
+tip_amt= x*.15
+tip_amt=float(tip_amt)
+print "Your tip for the inputted bill is", tip_amt, "dollars."
+total_bill= x + tip_amt
+total_bill= float(total_bill)
+print "Your total bill, including the tip of", tip_amt, " dollars is", \
+      total_bill, \
+      "dollars."
+raw_input("Press enter key to exit")
 
 
 @app.route('/shopping_list', methods=['GET','POST'])
